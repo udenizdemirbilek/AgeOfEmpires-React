@@ -1,0 +1,14 @@
+.header {
+  padding: 10px;
+  margin-right: auto;
+}
+
+.links {
+  text-align: center;;
+  font-size: 1.7em;
+}
+
+.nav-link {
+    color: #0000ff;
+    margin: 0 0.5em;
+}
