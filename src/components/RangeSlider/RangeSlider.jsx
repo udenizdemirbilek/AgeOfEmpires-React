@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { InputGroup } from "react-bootstrap";
+import { InputGroup, Row, Col } from "react-bootstrap";
 
 function valuetext(value) {
   return `${value}`;
@@ -22,22 +22,33 @@ function RangeSlider() {
   };
 
   return (
-    <Box sx={{ width: 400 }}>
-      <InputGroup className="mb-3">
-        <InputGroup.Checkbox aria-label="Checkbox for following text input" onChange={handleCheck}/>
-        <InputGroup.Text>Placeholder</InputGroup.Text>
-      </InputGroup>
-      <Slider
-        getAriaLabel={() => "Resource Cost"}
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        getAriaValueText={valuetext}
-        max={200}
-        min={0}
-      />
-      <h5>{`${value[0]} - ${value[1]}`}</h5>
-    </Box>
+    <Row >
+      <Col>
+        <InputGroup className="mb-3">
+          <InputGroup.Checkbox
+            aria-label="Checkbox for following text input"
+            onChange={handleCheck}
+          />
+          <InputGroup.Text>Placeholder</InputGroup.Text>
+        </InputGroup>
+      </Col>
+      <Col>
+        <Box sx={{ width: 400 }}>
+          <Slider
+            getAriaLabel={() => "Resource Cost"}
+            value={value}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+            getAriaValueText={valuetext}
+            max={200}
+            min={0}
+          />
+        </Box>
+      </Col>
+      <Col>
+        <h5>{`${value[0]} - ${value[1]}`}</h5>
+      </Col>
+    </Row>
   );
 }
 

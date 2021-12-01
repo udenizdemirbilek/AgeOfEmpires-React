@@ -1,13 +1,13 @@
 import React from "react";
-import data from "../../data/age-of-empires-units.json";
 import Table from "react-bootstrap/Table";
+import { useSelector } from "react-redux";
 import UnitRow from "../../components/UnitRow/UnitRow";
 import RangeSlider from "../../components/RangeSlider/RangeSlider";
 import AgeTab from "../../components/AgeTab/AgeTab";
-
+ 
 function Units() {
-  console.log(data);
-  const units = data.units;
+  // Display units in inital state at the start of the app, then display selected units
+  const units = useSelector(state => state.displayUnits ? state.displayUnits : state.units);
 
   return (
     <div className="units">

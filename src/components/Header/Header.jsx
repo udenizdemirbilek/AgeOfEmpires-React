@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 function Header() {
   return (
     <Row className="header">
-      <Col sm={{ span: 5, offset: 9 }}>
+      <Col sm={{ span: 2, offset: 8 }}>
         <Navbar expand="lg" className="my-2" >
           <Container className="links">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

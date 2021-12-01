@@ -1,26 +1,32 @@
 import React, {useState} from "react";
 import { Tabs, Tab } from "react-bootstrap";
-
+import { call, put } from "redux-saga/effects";
 
 function ControlledTabs() {
-    const [key, setKey] = useState('all');
-  
+    const [key, setKey] = useState('All');
+
+    function* ageSaga() {
+        yield put({type: "AGE", payload: key});
+    }
+  //need to dispatch the action
     return (
       <Tabs
-        id="controlled-tab-example"
-        activeKey={key}
-        onSelect={(k) => setKey(k)}
+        id="age-selector"
+        onSelect={(k) => {
+          setKey(k)
+          ageSaga(k);
+        }}
         className="mb-3"
       >
-        <Tab eventKey="all" title="All">
+        <Tab eventKey="All" title="All">
         </Tab>
-        <Tab eventKey="dark" title="Dark">
+        <Tab eventKey="Dark" title="Dark">
         </Tab>
-        <Tab eventKey="feudal" title="Feudal">
+        <Tab eventKey="Feudal" title="Feudal">
         </Tab>
-        <Tab eventKey="castle" title="Castle">
+        <Tab eventKey="Castle" title="Castle">
         </Tab>
-        <Tab eventKey="imperial" title="Imperial">
+        <Tab eventKey="Imperial" title="Imperial">
         </Tab>
       </Tabs>
     );

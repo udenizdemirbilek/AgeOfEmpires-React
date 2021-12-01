@@ -2,6 +2,9 @@ import React from "react";
 import { useParams } from "react-router";
 import { Table } from "react-bootstrap";
 
+//Write a component DetailRow that renders a row in the Details table.
+//implement redux saga to get the data from the server and update the state for DetailRow with map
+
 function Details() {
     let { unitId } = useParams();
 
