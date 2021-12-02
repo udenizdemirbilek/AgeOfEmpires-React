@@ -1,13 +1,23 @@
-import { put, takeEvery, all, call } from "redux-saga/effects";
+import { put, takeEvery, all } from "redux-saga/effects";
 
+//Worker Saga
 function* ageFilter(action) {
-  yield put({ payload: action.payload});
+  yield put({ type: "AGE", payload: action.payload});
 }
 
+function* costFilter(action) {
+  yield put({ type: "COST", payload: action.payload});
+}
+
+//Watcher Saga
 function* watchAgeFilter() {
-  yield takeEvery("AGE", ageFilter);
+  yield takeEvery("AGE_FILTER", ageFilter);
+}
+
+function* watchCostFilter() {
+  yield takeEvery("COST_FILTER", costFilter);
 }
 
 export default function* rootSaga() {
-  yield all([watchAgeFilter()]);
+  yield all([watchAgeFilter(), watchCostFilter()]);
 }

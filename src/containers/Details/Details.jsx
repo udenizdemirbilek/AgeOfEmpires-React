@@ -1,12 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Table } from "react-bootstrap";
-
-//Write a component DetailRow that renders a row in the Details table.
-//implement redux saga to get the data from the server and update the state for DetailRow with map
+import "./Details.css";
 
 function Details() {
-    let { unitId } = useParams();
+    const { unitId } = useParams();
+    const unit = useSelector(state => state.units.find(unit => unit.id === parseInt(unitId))) || {};
+    const unitCost = unit.cost ? unit.cost : "No Cost";
 
   return (
     <div>
@@ -15,51 +16,51 @@ function Details() {
         <tbody>
           <tr>
             <td>ID:</td>
-            <td>{unitId}</td>
+            <td>{unit.id ? unit.id : "No ID"}</td>
           </tr>
           <tr>
             <td>Name:</td>
-            <td></td>
+            <td>{unit.name ? unit.name : "No Name"}</td>
           </tr>
           <tr>
             <td>Description</td>
-            <td></td>
+            <td>{unit.description ? unit.description : "No Description"}</td>
           </tr>
           <tr>
             <td>Min. Required Age:</td>
-            <td></td>
+            <td>{unit.age ? unit.age : "No Age"}</td>
           </tr>
           <tr>
             <td>Wood Cost:</td>
-            <td></td>
+            <td>{unitCost.Wood ? unit.cost.Wood : "No Cost"}</td>
           </tr>
           <tr>
             <td>Food Cost:</td>
-            <td></td>
+            <td>{unitCost.Food ? unit.cost.Food : "No Cost"}</td>
           </tr>
           <tr>
             <td>Gold Cost:</td>
-            <td></td>
+            <td>{unitCost.Gold ? unit.cost.Gold : "No Cost"}</td>
           </tr>
           <tr>
             <td>Build Time:</td>
-            <td></td>
+            <td>{unit.build_time ? unit.build_time : "Not Applicable"}</td>
           </tr>
           <tr>
             <td>Reload Time:</td>
-            <td></td>
+            <td>{unit.reload_time ? unit.reload_time : "Not Applicable"}</td>
           </tr>
           <tr>
             <td>Hit Points:</td>
-            <td></td>
+            <td>{unit.hit_points ? unit.hit_points : "No HP"}</td>
           </tr>
           <tr>
             <td>Attack:</td>
-            <td></td>
+            <td>{unit.attack ? unit.attack : "Not Applicable"}</td>
           </tr>
           <tr>
             <td>Accuracy:</td>
-            <td></td>
+            <td>{unit.accuracy ? unit.accuracy : "Not Applicable"}</td>
           </tr>
         </tbody>
       </Table>

@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-//Activate links to details page
-//Rewrite logic and try to get rid of the extra commas on skirmisher, spearman
-
 function UnitRow({ id, name, age, cost }) {
   // Logic for displaying different kinds of costs in one string
-  let unitCost = "";
+  let unitCost = [];
   switch (cost) {
     case null:
       unitCost = "No Cost";
@@ -16,7 +13,7 @@ function UnitRow({ id, name, age, cost }) {
         case undefined:
           break;
         default:
-          unitCost += "Wood: " + cost.Wood + ", ";
+         unitCost.push("Wood: " + cost.Wood);
       }
       switch (cost.Food) {
         case undefined:
@@ -24,25 +21,27 @@ function UnitRow({ id, name, age, cost }) {
         case null:
           break;
         default:
-          unitCost += "Food: " + cost.Food + ", ";
+          unitCost.push("Food: " + cost.Food);
       }
       switch (cost.Gold) {
         case undefined:
           break;
         default:
-          unitCost += "Gold: " + cost.Gold + " ";
+          unitCost.push("Gold: " + cost.Gold);
       }
     }
   }
 
+  const unitCostString = unitCost === "No Cost" ? "No Cost" : unitCost.join(", ");
+  
   return (
     <tr>
-      {/* <Link to={`/details/${id}`}> */}
-        <td>{id}</td>
-        <td>{name}</td>
-        <td>{age}</td>
-        <td>{unitCost}</td>
-      {/* </Link> */}
+      <td>{id}</td>
+      <td>
+        <Link to={`/details/${id}`}>{name} </Link>
+      </td>
+      <td>{age}</td>
+      <td>{unitCostString}</td>
     </tr>
   );
 }

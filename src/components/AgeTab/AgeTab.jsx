@@ -1,20 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import { Tabs, Tab } from "react-bootstrap";
-import { call, put } from "redux-saga/effects";
+import { useDispatch, useSelector } from "react-redux";
 
 function ControlledTabs() {
-    const [key, setKey] = useState('All');
+    const dispatch = useDispatch();
+    const age = useSelector(state => state.age);
 
-    function* ageSaga() {
-        yield put({type: "AGE", payload: key});
-    }
-  //need to dispatch the action
     return (
       <Tabs
         id="age-selector"
-        onSelect={(k) => {
-          setKey(k)
-          ageSaga(k);
+        activeKey={age}
+        onSelect={(selectedAge) => {
+          dispatch({type: "AGE", payload: selectedAge});
         }}
         className="mb-3"
       >

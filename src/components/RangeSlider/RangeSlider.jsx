@@ -2,42 +2,57 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { InputGroup, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import "./RangeSlider.css";
 
 function valuetext(value) {
   return `${value}`;
 }
-//implement redux saga to get the data from the server and update the state for slider and checkbox (labels)
+//implement redux saga to get the data from the reducer and update the state for slider and checkbox (labels)
+//payload is going to be an object {name, value, checked}
 
-function RangeSlider() {
+function RangeSlider({label}) {
+  const dispatch = useDispatch();
+  const name = useSelector(state => state.label);
+  // console.log(name)
+
   const [value, setValue] = React.useState([0, 200]);
   const [check, setCheck] = React.useState(false);
 
   const handleChange = (event, newValue) => {
+    console.log(event)
     setValue(newValue);
   };
 
   const handleCheck = (event) => {
     setCheck(event.target.checked);
-    console.log(check);
+    console.log(event.target.name, event.target.checked);
   };
 
   return (
     <Row >
-      <Col>
-        <InputGroup className="mb-3">
+      <Col className="checkbox">
+        <InputGroup size="lg" className="mb-3">
           <InputGroup.Checkbox
             aria-label="Checkbox for following text input"
-            onChange={handleCheck}
+            // onChange={handleCheck}
+            onChange = {(costFilter) => {
+              dispatch({type: "COST", payload: {costName: costFilter.target.name, checked: costFilter.target.checked}});
+            }}
+            name={label}
+            value
           />
-          <InputGroup.Text>Placeholder</InputGroup.Text>
+          <InputGroup.Text>{label}</InputGroup.Text>
         </InputGroup>
       </Col>
       <Col>
-        <Box sx={{ width: 400 }}>
+        <Box sx={{ width: 400 }} className="sliderBox">
           <Slider
             getAriaLabel={() => "Resource Cost"}
             value={value}
-            onChange={handleChange}
+            onChange={(costFilter) => {
+              dispatch({type: "COST", payload: {costName: costFilter.target.name, value: costFilter.target.value}});
+            }}
             valueLabelDisplay="auto"
             getAriaValueText={valuetext}
             max={200}
@@ -48,6 +63,8 @@ function RangeSlider() {
       <Col>
         <h5>{`${value[0]} - ${value[1]}`}</h5>
       </Col>
+      <Col/>
+      <Col/>
     </Row>
   );
 }

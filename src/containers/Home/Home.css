@@ -1,0 +1,10 @@
+h1 {
+    margin: 0em 0em 1.5em 0em;
+    font-size: 2em;
+}
+
+.homeImage {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2em;
+}
