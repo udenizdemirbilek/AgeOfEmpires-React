@@ -8,12 +8,17 @@ import "./Units.css";
 
 function Units() {
   // Display units in inital state at the start of the app, then display selected units according to the age and cost range
-  const units = useSelector(state => {
-    if (state.ageFilterOutput) {
-      if (state.costFilterOutput) {
-        return state.costFilterOutput;
-      } else return state.ageFilterOutput;
-    } else return state.units;
+  const units = useSelector((state) => {
+    if (state.ageFilterOutput.length === 0) {
+      return state.units;
+    } else {
+        if (state.costFilterOutput.length === 0) {
+          return state.ageFilterOutput;
+        }
+        else {
+          return state.costFilterOutput;
+        }
+    }
   });
 
   return (
@@ -26,9 +31,9 @@ function Units() {
         </div>
         <div className="costs">
           <h3>Costs</h3>
-          <RangeSlider label="Wood" />
-          <RangeSlider label="Food" />
-          <RangeSlider label="Gold" />
+          <RangeSlider label="wood" />
+          <RangeSlider label="food" />
+          <RangeSlider label="gold" />
         </div>
         <Table striped bordered hover>
           <thead>

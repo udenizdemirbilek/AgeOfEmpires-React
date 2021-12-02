@@ -13,9 +13,8 @@ function valuetext(value) {
 
 function RangeSlider({label}) {
   const dispatch = useDispatch();
-  const name = useSelector(state => state.label);
-  // console.log(name)
-
+  const filterStatus = useSelector(state => state[label]);
+  console.log(filterStatus);
   const [value, setValue] = React.useState([0, 200]);
   const [check, setCheck] = React.useState(false);
 
@@ -40,7 +39,7 @@ function RangeSlider({label}) {
               dispatch({type: "COST", payload: {costName: costFilter.target.name, checked: costFilter.target.checked}});
             }}
             name={label}
-            value
+            value={filterStatus.checked}
           />
           <InputGroup.Text>{label}</InputGroup.Text>
         </InputGroup>
@@ -49,7 +48,7 @@ function RangeSlider({label}) {
         <Box sx={{ width: 400 }} className="sliderBox">
           <Slider
             getAriaLabel={() => "Resource Cost"}
-            value={value}
+            value={filterStatus.value}
             onChange={(costFilter) => {
               dispatch({type: "COST", payload: {costName: costFilter.target.name, value: costFilter.target.value}});
             }}

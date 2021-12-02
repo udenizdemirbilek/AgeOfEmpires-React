@@ -4,7 +4,6 @@ import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
-import initialState from "./data/age-of-empires-units.json";
 import "./index.css";
 import rootSaga from "./redux/sagas";
 import reducer from "./redux/reducers";
@@ -18,7 +17,6 @@ const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducer,
-  initialState,
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 sagaMiddleware.run(rootSaga);

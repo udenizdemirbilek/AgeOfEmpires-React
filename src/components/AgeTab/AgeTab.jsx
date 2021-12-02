@@ -15,15 +15,15 @@ function ControlledTabs() {
         }}
         className="mb-3"
       >
-        <Tab eventKey="All" title="All">
+        <Tab eventKey="all" title="All">
         </Tab>
-        <Tab eventKey="Dark" title="Dark">
+        <Tab eventKey="dark" title="Dark">
         </Tab>
-        <Tab eventKey="Feudal" title="Feudal">
+        <Tab eventKey="feudal" title="Feudal">
         </Tab>
-        <Tab eventKey="Castle" title="Castle">
+        <Tab eventKey="castle" title="Castle">
         </Tab>
-        <Tab eventKey="Imperial" title="Imperial">
+        <Tab eventKey="imperial" title="Imperial">
         </Tab>
       </Tabs>
     );
