@@ -8,18 +8,9 @@ import "./Units.css";
 
 function Units() {
   // Display units in inital state at the start of the app, then display selected units according to the age and cost range
-  const units = useSelector((state) => {
-    if (state.ageFilterOutput.length === 0) {
-      return state.units;
-    } else {
-        if (state.costFilterOutput.length === 0) {
-          return state.ageFilterOutput;
-        }
-        else {
-          return state.costFilterOutput;
-        }
-    }
-  });
+  const units = useSelector((state) =>
+    state.filterOutput ? state.filterOutput : state.units
+  );
 
   return (
     <div className="units">

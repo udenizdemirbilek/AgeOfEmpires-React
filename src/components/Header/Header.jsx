@@ -2,15 +2,15 @@ import React from "react";
 import "./Header.css";
 import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
- 
+
 function Header() {
   return (
     <Row className="header">
       <Col sm={{ span: 1, offset: 9 }}>
-        <Navbar expand="lg" className="my-2" >
+        <Navbar expand="lg" className="my-2">
           <Container className="links">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" >
+            <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto ">
                 <NavLink
                   to="/"

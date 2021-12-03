@@ -3,30 +3,25 @@ import { Tabs, Tab } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 function ControlledTabs() {
-    const dispatch = useDispatch();
-    const age = useSelector(state => state.age);
+  const dispatch = useDispatch();
+  const age = useSelector((state) => state.age);
 
-    return (
-      <Tabs
-        id="age-selector"
-        activeKey={age}
-        onSelect={(selectedAge) => {
-          dispatch({type: "AGE", payload: selectedAge});
-        }}
-        className="mb-3"
-      >
-        <Tab eventKey="all" title="All">
-        </Tab>
-        <Tab eventKey="dark" title="Dark">
-        </Tab>
-        <Tab eventKey="feudal" title="Feudal">
-        </Tab>
-        <Tab eventKey="castle" title="Castle">
-        </Tab>
-        <Tab eventKey="imperial" title="Imperial">
-        </Tab>
-      </Tabs>
-    );
-  }
-  
-  export default ControlledTabs;
+  return (
+    <Tabs
+      id="age-selector"
+      activeKey={age}
+      onSelect={(selectedAge) => {
+        dispatch({ type: "AGE_FILTER", payload: selectedAge });
+      }}
+      className="mb-3"
+    >
+      <Tab eventKey="All" title="All"></Tab>
+      <Tab eventKey="Dark" title="Dark"></Tab>
+      <Tab eventKey="Feudal" title="Feudal"></Tab>
+      <Tab eventKey="Castle" title="Castle"></Tab>
+      <Tab eventKey="Imperial" title="Imperial"></Tab>
+    </Tabs>
+  );
+}
+
+export default ControlledTabs;

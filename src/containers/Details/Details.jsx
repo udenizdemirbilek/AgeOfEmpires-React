@@ -5,9 +5,12 @@ import { Table } from "react-bootstrap";
 import "./Details.css";
 
 function Details() {
-    const { unitId } = useParams();
-    const unit = useSelector(state => state.units.find(unit => unit.id === parseInt(unitId))) || {};
-    const unitCost = unit.cost ? unit.cost : "No Cost";
+  const { unitId } = useParams();
+  const unit =
+    useSelector((state) =>
+      state.units.find((unit) => unit.id === parseInt(unitId))
+    ) || {};
+  const unitCost = unit.cost ? unit.cost : "No Cost";
 
   return (
     <div>
