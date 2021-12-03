@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Age of Empires II Unit Database by [@udenizdemirbilek](https://github.com/udenizdemirbilek)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Used Technologies
 
-In the project directory, you can run:
+* React.JS
+* React Router
+* React Bootstrap
+* Redux-Saga
+* Material-UI
+* Netlify https://ageofempires-react.netlify.app/
 
-### `yarn start`
+## Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Home Page
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Static home page with an image of my workstation. 
 
-### `yarn test`
+**Header:**
+Displays NavLinks to navigate to other pages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Units Page
 
-### `yarn build`
+Reads Redux state and displays a list of units according to selected filters.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Age Tab:**
+Displays the selected age by the user as well as dispatching actions to Redux-Saga to update the selected age. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Range Slider:**
+Displays whether the user has activated a cost filter and the range of the filter. 
+Dispatches actions to Redux-Saga to update the selected range.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**UnitRow:**
+Reads data from parent component Units as props and displays a unit row with the unit's id, name, age, and cost.
 
-### `yarn eject`
+### Details Page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Uses useParams to get the unit id from the url. Using unit id, reads the unit data from Redux state and displays it.
+Uses ternary operators to check if the corresponding field is empty or not.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Sagas.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Listens for actions dispatched by the user and dispatches actions to Redux-Saga to update the Redux state.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Testing
 
-## Learn More
+Unfortunately testing couldn't be implemented due to lack of time.
+Definitely will try to implement it in the future. Would be my first priority if I had the time.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## SASS
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Unfortuantely SASS couldn't be implemented due to lack of time.
+Definitely will try to implement it in the future.
 
-### Code Splitting
+## Netlify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Redirects are set up on Netlify so routes work on Netlify.
 
-### Analyzing the Bundle Size
+## React-Router
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Not found page is set up so user is redirected to the home page if the url is invalid.
