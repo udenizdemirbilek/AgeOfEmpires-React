@@ -10,14 +10,13 @@ const initialState = {
 };
 
 export default function combinedFilter(state = initialState, action) {
-  
   switch (action.type) {
     // Age Filter
     case "AGE": {
       return {
         ...state,
         age: action.payload,
-      }
+      };
     }
 
     // Cost Filter
@@ -25,22 +24,28 @@ export default function combinedFilter(state = initialState, action) {
       if (action.payload.checked === true || action.payload.checked === false) {
         return {
           ...state,
-          [action.payload.costName]: {checked: action.payload.checked, value: state[action.payload.costName].value}
-        }
+          [action.payload.costName]: {
+            checked: action.payload.checked,
+            value: state[action.payload.costName].value,
+          },
+        };
       } else if (action.payload.value) {
         return {
           ...state,
-          [action.payload.costName]: {checked: state[action.payload.costName].checked, value: action.payload.value}
-        }
+          [action.payload.costName]: {
+            checked: state[action.payload.costName].checked,
+            value: action.payload.value,
+          },
+        };
       }
-      break
+      break;
     }
 
     case "SET_FILTERED":
       return {
         ...state,
-        filterOutput: action.payload
-      }
+        filterOutput: action.payload,
+      };
 
     default:
       return state;

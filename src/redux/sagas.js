@@ -1,6 +1,6 @@
 import { put, all, select, takeLatest } from "redux-saga/effects";
 
-function* filter(action) {
+function* filter() {
   const state = yield select();
   let filtered_units = state.units;
 
@@ -9,7 +9,10 @@ function* filter(action) {
     const resource = resourceName.toLowerCase();
     return filtered_units.filter((unit) => {
       // Checks for null cost and undefined resource cost
-      if (state[resource].value[0] === 0 && (unit.cost === null || unit.cost[resource] === undefined)) {
+      if (
+        state[resource].value[0] === 0 &&
+        (unit.cost === null || unit.cost[resource] === undefined)
+      ) {
         return true;
       } else
         return (
