@@ -13,7 +13,7 @@ function UnitRow({ id, name, age, cost }) {
         case undefined:
           break;
         default:
-         unitCost.push("Wood: " + cost.Wood);
+          unitCost.push("Wood: " + cost.Wood);
       }
       switch (cost.Food) {
         case undefined:
@@ -32,8 +32,9 @@ function UnitRow({ id, name, age, cost }) {
     }
   }
 
-  const unitCostString = unitCost === "No Cost" ? "No Cost" : unitCost.join(", ");
-  
+  const unitCostString =
+    unitCost === "No Cost" ? "No Cost" : unitCost.join(", ");
+
   return (
     <tr>
       <td>{id}</td>
